@@ -3,13 +3,16 @@
 using namespace std;
 
 void bubbleSort(int arr[], int term) {
+	int flag=0;
 	for(int i = 0; i < term; ++i) {
 		for(int index = 0; index < term-i-1; ++index) {
+			flag=1;
 			if(arr[index] < arr[index + 1]) {
 				int swap;
 				swap = arr[index];
 				arr[index] = arr[index + 1];
 				arr[index + 1] = swap;
+				flag=0;
 			}
 		}
 	}
@@ -19,11 +22,21 @@ void bubbleSort(int arr[], int term) {
 }
 
 int main() {
+	int arr[100];
+	int n,i;
 	cout << "Hi in this program I will do bubble sort" << endl;
-	cout << "The numbers are 3, 9, 5, 10, 6"<< endl;
-	int num[9] = {3, 9, 5, 3, 10, 6, 3, 3, 3};
-	int terms = sizeof (num) / sizeof (num[0]);
-	bubbleSort(num, terms);
-
+	cout << "Enter the Size of the Array : "<< endl;
+	cin>>n;
+	cout<<"Enter the Elements of the Array : "<<endl;
+	for(i=0;i<n;i++)
+		cin>>arr[i]
+	bubbleSort(arr, n);
+	if(flag==1)
+		cout<<"Array is already sorted. ";
+	else{		
+		cout<<"The sorted array is given as :"<<endl;
+		for(i=0;i<n;i++)
+			cout<<arr[i];
+	}
 	//answer = [2, 5, 6, 9, 2, 10]
 }
